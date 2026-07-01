@@ -11,7 +11,7 @@ export interface SpeciesSpecificData {
 }
 
 export interface VeterinaryDrug {
-  id: string;
+  id: number;
   drug_name: string;
   classifications: string[]; // e.g., ["Emergency", "Anesthetic", "Clinical Use"]
   description: string;

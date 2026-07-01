@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import DrugsDatabaseScreen from './screens/DrugsDatabaseScreen';
 
-type Screen = 'species' | 'category' | 'section';
+type Screen = 'species' | 'category' | 'section' | 'drugs-database';
 type Species = 'canine' | 'feline';
-type Category = 'anesthesia' | 'clinical';
+type Category = 'anesthesia' | 'clinical' | 'emergency';
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('species');
@@ -20,7 +21,9 @@ export default function App() {
   };
 
   const handleBack = () => {
-    if (currentScreen === 'section') {
+    if (currentScreen === 'drugs-database') {
+      setCurrentScreen('section');
+    } else if (currentScreen === 'section') {
       setCurrentScreen('category');
     } else if (currentScreen === 'category') {
       setCurrentScreen('species');
@@ -53,14 +56,19 @@ export default function App() {
       </header>
 
       {/* Main Flow Container */}
-      <main style={styles.main}>
-        <div className="glass-card animate-fade-in" style={styles.card}>
+      <main style={currentScreen === 'drugs-database' ? styles.mainFull : styles.main}>
+        <div
+          className="glass-card animate-fade-in"
+          style={currentScreen === 'drugs-database' ? styles.cardWide : styles.card}
+        >
+          {/* Back Button — shown on every screen except species selection */}
           {currentScreen !== 'species' && (
             <button className="btn btn-secondary" onClick={handleBack} style={styles.backBtn}>
               &larr; Back
             </button>
           )}
 
+          {/* ── Screen: Species ─────────────────────────────────────────── */}
           {currentScreen === 'species' && (
             <div>
               <div style={styles.headingGroup}>
@@ -71,21 +79,21 @@ export default function App() {
               </div>
 
               <div style={styles.grid}>
-                {/* Canine option */}
+                {/* Canine */}
                 <div style={styles.gridItem} onClick={() => handleSpeciesSelect('canine')}>
                   <div style={styles.iconWrapper}>🐕</div>
                   <h3 style={styles.gridTitle}>Canine</h3>
                   <p style={styles.gridDesc}>Dogs and puppies specific formulary calculations.</p>
                 </div>
 
-                {/* Feline option */}
+                {/* Feline */}
                 <div style={styles.gridItem} onClick={() => handleSpeciesSelect('feline')}>
                   <div style={styles.iconWrapper}>🐈</div>
                   <h3 style={styles.gridTitle}>Feline</h3>
                   <p style={styles.gridDesc}>Cats and kittens specific formulary calculations.</p>
                 </div>
 
-                {/* Exotic pets option (disabled, Coming Soon) */}
+                {/* Exotic — Coming Soon */}
                 <div style={{ ...styles.gridItem, ...styles.gridItemDisabled }}>
                   <span style={styles.comingSoonBadge}>Coming Soon</span>
                   <div style={styles.iconWrapper}>🦎</div>
@@ -96,6 +104,7 @@ export default function App() {
             </div>
           )}
 
+          {/* ── Screen: Category ────────────────────────────────────────── */}
           {currentScreen === 'category' && (
             <div>
               <div style={styles.headingGroup}>
@@ -121,20 +130,33 @@ export default function App() {
                   <div style={styles.iconWrapper}>💊</div>
                   <h3 style={styles.gridTitle}>Clinical</h3>
                   <p style={styles.gridDesc}>
-                    Antibiotics, emergency medications, fluids, and standard treatments.
+                    Antibiotics, analgesics, fluids, and standard treatments.
+                  </p>
+                </div>
+
+                <div style={styles.gridItem} onClick={() => handleCategorySelect('emergency')}>
+                  <div style={styles.iconWrapper}>🚨</div>
+                  <h3 style={styles.gridTitle}>Emergency</h3>
+                  <p style={styles.gridDesc}>
+                    Reversal agents, antagonists, and critical care drugs.
                   </p>
                 </div>
               </div>
             </div>
           )}
 
+          {/* ── Screen: Section ─────────────────────────────────────────── */}
           {currentScreen === 'section' && (
             <div>
               <div style={styles.headingGroup}>
                 <h2 style={styles.title}>
                   Select Section &mdash;{' '}
                   <span style={styles.highlight}>
-                    {category === 'anesthesia' ? 'Anesthesia 💉' : 'Clinical 💊'}
+                    {category === 'anesthesia'
+                      ? 'Anesthesia 💉'
+                      : category === 'emergency'
+                        ? 'Emergency 🚨'
+                        : 'Clinical 💊'}
                   </span>
                 </h2>
                 <p style={styles.subtitle}>
@@ -143,7 +165,9 @@ export default function App() {
               </div>
 
               <div style={styles.grid}>
-                <div style={{ ...styles.gridItem, borderColor: 'var(--secondary)' }}>
+                {/* My Protocols — placeholder */}
+                <div style={{ ...styles.gridItem, borderColor: 'var(--secondary)', opacity: 0.6, cursor: 'not-allowed' }}>
+                  <span style={styles.comingSoonBadge}>Coming Soon</span>
                   <div style={styles.iconWrapper}>📁</div>
                   <h3 style={styles.gridTitle}>My Protocols</h3>
                   <p style={styles.gridDesc}>
@@ -151,7 +175,12 @@ export default function App() {
                   </p>
                 </div>
 
-                <div style={{ ...styles.gridItem, borderColor: 'var(--primary)' }}>
+                {/* Drugs Database — live */}
+                <div
+                  id="nav-drugs-database"
+                  style={{ ...styles.gridItem, borderColor: 'var(--primary)' }}
+                  onClick={() => setCurrentScreen('drugs-database')}
+                >
                   <div style={styles.iconWrapper}>🔍</div>
                   <h3 style={styles.gridTitle}>Drugs Database</h3>
                   <p style={styles.gridDesc}>
@@ -161,13 +190,38 @@ export default function App() {
               </div>
             </div>
           )}
+
+          {/* ── Screen: Drugs Database ───────────────────────────────────── */}
+          {currentScreen === 'drugs-database' && species && (
+            <div>
+              <div style={{ ...styles.headingGroup, marginTop: '48px' }}>
+                <h2 style={styles.title}>
+                  Drugs Database &mdash;{' '}
+                  <span style={styles.highlight}>
+                    {species === 'canine' ? 'Canine 🐕' : 'Feline 🐈'}
+                  </span>
+                </h2>
+                <p style={styles.subtitle}>
+                  {category === 'anesthesia'
+                    ? 'Anesthesia · '
+                    : category === 'emergency'
+                      ? 'Emergency · '
+                      : 'Clinical · '}
+                  Full species-specific formulary with dosing guidelines
+                </p>
+              </div>
+
+              <DrugsDatabaseScreen species={species} category={category!} />
+            </div>
+          )}
         </div>
       </main>
     </div>
   );
 }
 
-// Inline styles mirroring the design guidelines for clean layout
+// ─── Styles ───────────────────────────────────────────────────────────────────
+
 const styles = {
   container: {
     minHeight: '100vh',
@@ -182,6 +236,9 @@ const styles = {
     borderBottom: '1px solid var(--border-color)',
     background: 'rgba(11, 15, 25, 0.6)',
     backdropFilter: 'blur(10px)',
+    position: 'sticky' as const,
+    top: 0,
+    zIndex: 10,
   },
   logoContainer: {
     display: 'flex',
@@ -209,9 +266,21 @@ const styles = {
     alignItems: 'center',
     padding: '40px 20px',
   },
+  mainFull: {
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    padding: '40px 20px',
+  },
   card: {
     width: '100%',
     maxWidth: '960px',
+    position: 'relative' as const,
+  },
+  cardWide: {
+    width: '100%',
+    maxWidth: '900px',
     position: 'relative' as const,
   },
   backBtn: {

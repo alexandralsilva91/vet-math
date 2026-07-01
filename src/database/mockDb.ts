@@ -2,133 +2,1093 @@ import type { VeterinaryDrug } from '../types';
 
 export const drugDatabase: VeterinaryDrug[] = [
   {
-    id: '1',
-    drug_name: 'Lidocaine',
-    classifications: ['Emergency', 'Anesthetic (Local)', 'Clinical Use (Antiarrhythmic)'],
-    description: 'A Class 1b antiarrhythmic and local anesthetic sodium-channel blocker [1, 2].',
-    indications: [
-      'Emergency control of ventricular tachycardia [1]',
-      'Local or regional analgesia [3]',
-    ],
-    dosage: {
-      canine: {
-        min_mg_kg: 2.0,
-        max_mg_kg: 8.0,
-        unit: 'mg/kg',
-        notes: 'Follow with constant rate infusion of 0.025-0.1 mg/kg/min [1].',
+    "": [
+      {
+        "drug_name": "Dexmedetomidine",
+        "classifications": ["Anesthetic (Pre-medication)", "Clinical Use (Sedative/Analgesic)"],
+        "description": "Pure dextroenantiomer of medetomidine; twice as potent as the racemic mixture.",
+        "indications": [
+          "Sedation and premedication",
+          "Alleviation of acute noise anxiety",
+          "Short duration surgical anaesthesia (with ketamine)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.001,
+            "max_mg_kg": 0.01,
+            "unit": "mg/kg",
+            "notes": "1-10 µg/kg i.v., i.m., or s.c.. 125 µg/m² gel applied to oral mucosa for noise anxiety."
+          },
+          "feline": {
+            "min_mg_kg": 0.001,
+            "max_mg_kg": 0.01,
+            "unit": "mg/kg",
+            "notes": "1-10 µg/kg i.v., i.m., or s.c.."
+          }
+        },
+        "onset_of_action": "Rapid; duration of analgesia is approximately 1 hour at 5 µg/kg.",
+        "contraindications": [
+          "Cardiovascular or systemic disease",
+          "Geriatric patients",
+          "Pregnant animals"
+        ],
+        "side_effects": [
+          "Peripheral vasoconstriction",
+          "Compensatory bradycardia",
+          "Diuresis",
+          "Transient increase in blood glucose"
+        ],
+        "drug_interactions": [
+          "Significantly reduces dose requirements of concurrently administered anaesthetic drugs."
+        ]
       },
-      feline: {
-        min_mg_kg: 0.25,
-        max_mg_kg: 2.0,
-        unit: 'mg/kg',
-        notes: 'Administer slowly; cats are highly sensitive to toxic effects [1, 3].',
+      {
+        "drug_name": "Medetomidine",
+        "classifications": ["Anesthetic (Pre-medication)", "Clinical Use (Sedative)"],
+        "description": "Alpha-2 adrenoreceptor agonist providing dose-dependent sedation and muscle relaxation.",
+        "indications": [
+          "Sedation and premedication",
+          "Total injectable anaesthesia (with ketamine)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.005,
+            "max_mg_kg": 0.02,
+            "unit": "mg/kg",
+            "notes": "5-20 µg/kg i.v., i.m., or s.c.. Use lower end for i.v."
+          },
+          "feline": {
+            "min_mg_kg": 0.005,
+            "max_mg_kg": 0.02,
+            "unit": "mg/kg",
+            "notes": "5-20 µg/kg i.v., i.m., or s.c.."
+          }
+        },
+        "onset_of_action": "Rapid.",
+        "contraindications": [
+          "Cardiovascular disease",
+          "Pregnancy",
+          "Vomiting is contraindicated",
+          "Diabetic animals"
+        ],
+        "side_effects": [
+          "Bradycardia",
+          "Vomiting (especially after i.m. administration)",
+          "Diuresis",
+          "Hyperglycaemia"
+        ],
+        "drug_interactions": [
+          "Potentiates effects of other anaesthetic agents.",
+          "Do not use with sympathomimetic amines."
+        ]
       },
-    },
-    onset_of_action: 'Rapid [1].',
-    contraindications: [
-      'Do not give i.v. to cats for perioperative analgesia [3]',
-      'Do not use solutions with adrenaline for ring blocks [3]',
-    ],
-    side_effects: ['CNS toxicity (seizures)', 'Cardiovascular depression and hypotension [4]'],
-    drug_interactions: ['Cimetidine and propranolol may prolong clearance [4]'],
-  },
-  {
-    id: '2',
-    drug_name: 'Adrenaline (Epinephrine)',
-    classifications: ['Emergency'],
-    description: 'A potent catecholamine acting on alpha and beta-receptors [5].',
-    indications: ['Cardiac resuscitation', 'Anaphylaxis', 'Status asthmaticus [5]'],
-    dosage: {
-      canine: {
-        min_mg_kg: 10, // 10 ug/kg
-        max_mg_kg: 10,
-        unit: 'ug/kg',
-        notes: '10 µg/kg every 3-5 mins for CPA. Double dose if used intratracheally [6].',
+      {
+        "drug_name": "Atipamezole",
+        "classifications": ["Emergency (Reversal Agent)"],
+        "description": "Selective alpha-2 adrenoreceptor antagonist used to reverse effects of alpha-2 agonists.",
+        "indications": [
+          "Reversal of sedation and cardiovascular effects of medetomidine or dexmedetomidine."
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.1,
+            "max_mg_kg": 0.1,
+            "unit": "mg/kg",
+            "notes": "5x previous medetomidine dose or 10x dexmedetomidine dose i.m.. Use 100 µg/kg if dose unknown."
+          },
+          "feline": {
+            "min_mg_kg": 0.1,
+            "max_mg_kg": 0.1,
+            "unit": "mg/kg",
+            "notes": "2.5x previous medetomidine dose or 5x dexmedetomidine dose i.m.."
+          }
+        },
+        "onset_of_action": "Rapid.",
+        "contraindications": [
+          "Not recommended in pregnancy."
+        ],
+        "side_effects": [
+          "Transient over-alertness",
+          "Tachycardia (after overdosage)"
+        ],
+        "drug_interactions": [
+          "Antagonizes all alpha-2 agonists."
+        ]
       },
-      feline: {
-        min_mg_kg: 10, // 10 ug/kg
-        max_mg_kg: 10,
-        unit: 'ug/kg',
-        notes: '10 µg/kg i.v. or i.m. for anaphylaxis [7, 8].',
+      {
+        "drug_name": "Paracetamol",
+        "classifications": ["Clinical Use (Analgesic/Antipyretic)"],
+        "description": "Analgesic with poor anti-inflammatory effects; mechanism involving central prostaglandin inhibition.",
+        "indications": [
+          "Control of mild to moderate pain",
+          "Antipyretic action"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 10.0,
+            "max_mg_kg": 20.0,
+            "unit": "mg/kg",
+            "notes": "q8h. Oral Pardale-V (with codeine) dose is 1 tab/12kg q8h."
+          },
+          "feline": {
+            "min_mg_kg": 0.0,
+            "max_mg_kg": 0.0,
+            "unit": "mg/kg",
+            "notes": "DO NOT USE. Extremely toxic to cats."
+          }
+        },
+        "onset_of_action": "Variable.",
+        "contraindications": [
+          "Cats (total contraindication)",
+          "Pre-existing liver disease in dogs"
+        ],
+        "side_effects": [
+          "Liver damage (dogs)",
+          "Methaemoglobinaemia (cats - fatal)"
+        ],
+        "drug_interactions": [
+          "Metoclopramide enhances absorption."
+        ]
       },
-    },
-    onset_of_action: 'Immediate (short duration 2-5 mins) [5].',
-    contraindications: ['Direct intracardiac injection not recommended [5].'],
-    side_effects: ['Ventricular fibrillation', 'Severe tachycardia [9].'],
-    drug_interactions: [
-      'Halothane or high-dose digoxin sensitizes the myocardium to arrhythmias [10].',
-    ],
-  },
-  {
-    id: '3',
-    drug_name: 'Diazepam',
-    classifications: ['Anesthetic', 'Clinical Use (Anticonvulsant)'],
-    description: 'A benzodiazepine with anticonvulsant, muscle relaxant, and sedative properties.',
-    indications: [
-      'Emergency control of status epilepticus',
-      'Pre-medication as part of anesthetic protocols',
-    ],
-    dosage: {
-      canine: {
-        min_mg_kg: 0.5,
-        max_mg_kg: 1.0,
-        unit: 'mg/kg',
-        notes: 'Provides poor sedation alone in healthy dogs and can cause paradoxical excitation.',
+      {
+        "drug_name": "Atropine",
+        "classifications": ["Emergency", "Anesthetic (Pre-medication)", "Clinical Use"],
+        "description": "Antimuscarinic agent blocking acetylcholine at parasympathetic nerve terminals.",
+        "indications": [
+          "Management of bradyarrhythmias",
+          "Organophosphate poisoning management",
+          "Ophthalmic mydriasis"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.01,
+            "max_mg_kg": 0.04,
+            "unit": "mg/kg",
+            "notes": "0.01-0.03 mg/kg i.v. for bradycardia. 0.2-0.5 mg/kg for OP poisoning."
+          },
+          "feline": {
+            "min_mg_kg": 0.01,
+            "max_mg_kg": 0.04,
+            "unit": "mg/kg",
+            "notes": "0.01-0.03 mg/kg i.v. for bradycardia."
+          }
+        },
+        "onset_of_action": "2-3 minutes (i.v.); 10 minutes (i.m.).",
+        "contraindications": [
+          "Glaucoma",
+          "Lens luxation",
+          "Keratoconjunctivitis sicca"
+        ],
+        "side_effects": [
+          "Sinus tachycardia",
+          "Blurred vision",
+          "Drying of bronchial secretions",
+          "Reduced tear production"
+        ],
+        "drug_interactions": [
+          "Combination with alpha-2 agonists not recommended.",
+          "Potentiated by antihistamines and pethidine."
+        ]
       },
-      feline: {
-        min_mg_kg: 0.5,
-        max_mg_kg: 1.0,
-        unit: 'mg/kg',
-        notes:
-          'Provides poor sedation alone in healthy cats and can cause paradoxical excitation. Avoid repeated oral doses due to risk of idiosyncratic hepatic necrosis.',
+      {
+        "drug_name": "Glycopyrronium (Glycopyrrolate)",
+        "classifications": ["Anesthetic (Pre-medication)", "Clinical Use"],
+        "description": "Quaternary antimuscarinic agent without central effects as it does not cross the BBB.",
+        "indications": [
+          "Inhibition of vagal efferent activity (bradycardia)",
+          "Antisialagogue",
+          "Antagonism of neuromuscular block (with neostigmine)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.002,
+            "max_mg_kg": 0.01,
+            "unit": "mg/kg",
+            "notes": "2-10 µg/kg i.v., i.m. for bradyarrhythmias."
+          },
+          "feline": {
+            "min_mg_kg": 0.002,
+            "max_mg_kg": 0.01,
+            "unit": "mg/kg",
+            "notes": "2-10 µg/kg i.v., i.m. for bradyarrhythmias."
+          }
+        },
+        "onset_of_action": "Longer than atropine.",
+        "contraindications": [
+          "None specified; use caution in cases where tachycardia is dangerous."
+        ],
+        "side_effects": [
+          "Transient tachycardia",
+          "Sticky oral/bronchial secretions"
+        ],
+        "drug_interactions": [
+          "Potentiated by benzodiazepines and phenothiazines.",
+          "Antagonizes metoclopramide effects."
+        ]
       },
-    },
-    onset_of_action: 'Rapid (1-5 mins following i.v.).',
-    contraindications: ['Avoid in animals with hepatic insufficiency.'],
-    side_effects: ['Paradoxical excitation', 'Sedation', 'Ataxia'],
-    drug_interactions: ['Cimetidine and erythromycin can inhibit metabolism.'],
-  },
-  {
-    id: '4',
-    drug_name: 'Afoxolaner',
-    classifications: ['Clinical Use (Ectoparasiticide)'],
-    description: 'An isoxazoline ectoparasiticide for treatment of flea and tick infestations.',
-    indications: [
-      'Treatment and prevention of flea (Ctenocephalides felis) infestations in dogs',
-      'Treatment of tick infestations in dogs',
-    ],
-    dosage: {
-      canine: {
-        min_mg_kg: 2.5,
-        max_mg_kg: 6.5,
-        unit: 'mg/kg',
-        notes: 'Administer orally. Minimum dose is 2.5 mg/kg. Safe for dogs only.',
+      {
+        "drug_name": "Diazepam",
+        "classifications": ["Emergency", "Anesthetic (Pre-medication)", "Clinical Use (Anticonvulsant)"],
+        "description": "Benzodiazepine that enhances GABA activity in the CNS.",
+        "indications": [
+          "Emergency control of status epilepticus",
+          "Skeletal muscle relaxation",
+          "Feline appetite stimulant"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.5,
+            "max_mg_kg": 1.0,
+            "unit": "mg/kg",
+            "notes": "Bolus i.v. or intrarectally for seizures; repeat every 10 min up to 3 times."
+          },
+          "feline": {
+            "min_mg_kg": 0.1,
+            "max_mg_kg": 1.0,
+            "unit": "mg/kg",
+            "notes": "0.1-0.2 mg/kg i.v. once for appetite. Seizure doses as for dogs."
+          }
+        },
+        "onset_of_action": "2-3 minutes (i.v.); 5-10 minutes (rectal).",
+        "contraindications": [
+          "CNS depression",
+          "Severe muscle weakness",
+          "Hepatic impairment"
+        ],
+        "side_effects": [
+          "Sedation",
+          "Muscle weakness",
+          "Paradoxical excitation",
+          "Fulminant hepatic necrosis in cats (repeated oral use)"
+        ],
+        "drug_interactions": [
+          "Cimetidine inhibits metabolism.",
+          "Potentiates sedative effects of opioids."
+        ]
       },
-      // Feline: undefined (Dogs only)
-    },
-    onset_of_action: 'Starts killing fleas within 8 hours.',
-    contraindications: ['Do not use in cats or other non-canine species.'],
-    side_effects: ['Vomiting', 'Diarrhea', 'Lethargy'],
-    drug_interactions: ['None reported.'],
-  },
-  {
-    id: '5',
-    drug_name: 'Acetazolamide',
-    classifications: ['Clinical Use (Glaucoma / Diuretic)'],
-    description: 'A carbonic anhydrase inhibitor used to reduce intraocular pressure.',
-    indications: ['Reduction of intraocular pressure in glaucoma', 'Diuretic therapy'],
-    dosage: {
-      canine: {
-        min_mg_kg: 5.0,
-        max_mg_kg: 10.0,
-        unit: 'mg/kg',
-        notes: 'Administer orally or intravenously.',
+      {
+        "drug_name": "Midazolam",
+        "classifications": ["Emergency", "Anesthetic (Pre-medication)"],
+        "description": "Short-acting benzodiazepine; more potent and less irritant than diazepam.",
+        "indications": [
+          "Status epilepticus management",
+          "Sedation and amnesia for premedication",
+          "Muscle relaxation (with ketamine)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.2,
+            "max_mg_kg": 0.3,
+            "unit": "mg/kg",
+            "notes": "i.v. or intrarectally. CRI for status epilepticus at 0.3 mg/kg/h."
+          },
+          "feline": {
+            "min_mg_kg": 0.2,
+            "max_mg_kg": 0.3,
+            "unit": "mg/kg",
+            "notes": "i.v. or intrarectally."
+          }
+        },
+        "onset_of_action": "Rapid.",
+        "contraindications": [
+          "Neonates",
+          "Marked respiratory depression"
+        ],
+        "side_effects": [
+          "Respiratory depression",
+          "Hypotension",
+          "Paradoxical excitement"
+        ],
+        "drug_interactions": [
+          "Erythromycin inhibits metabolism.",
+          "Potentiates effects of propofol and inhalants."
+        ]
       },
-      // Feline: undefined (Avoid in cats)
-    },
-    onset_of_action: 'Moderate.',
-    contraindications: ['Avoid in cats. Do not use in animals with hepatic or renal impairment.'],
-    side_effects: ['Electrolyte depletion', 'Metabolic acidosis', 'Vomiting'],
-    drug_interactions: ['May decrease renal clearance of quinidine and increase side effects.'],
-  },
-];
+      {
+        "drug_name": "Flumazenil",
+        "classifications": ["Emergency (Antagonist)"],
+        "description": "Specific benzodiazepine receptor antagonist.",
+        "indications": [
+          "Reversal of benzodiazepine-induced sedation and respiratory depression."
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.01,
+            "max_mg_kg": 0.1,
+            "unit": "mg/kg",
+            "notes": "i.v. slowly. Duration of action is short (~1 hour)."
+          },
+          "feline": {
+            "min_mg_kg": 0.01,
+            "max_mg_kg": 0.1,
+            "unit": "mg/kg",
+            "notes": "i.v. slowly."
+          }
+        },
+        "onset_of_action": "1-2 minutes.",
+        "contraindications": [
+          "Patients suspected of tricyclic antidepressant overdose (risk of seizures)."
+        ],
+        "side_effects": [
+          "May trigger seizures in animals on long-term benzodiazepines."
+        ],
+        "drug_interactions": [
+          "Specific antagonist to diazepam, midazolam, etc."
+        ]
+      },
+      {
+        "drug_name": "Isoflurane",
+        "classifications": ["Anesthetic (Inhalational)"],
+        "description": "Potent volatile anaesthetic with rapid induction and recovery.",
+        "indications": [
+          "Induction and maintenance of general anaesthesia."
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 1.2,
+            "max_mg_kg": 1.7,
+            "unit": "MAC %",
+            "notes": "Minimum Alveolar Concentration (MAC) is ~1.2%. Deliver via calibrated vaporizer."
+          },
+          "feline": {
+            "min_mg_kg": 1.6,
+            "max_mg_kg": 1.6,
+            "unit": "MAC %",
+            "notes": "MAC is ~1.6% in cats."
+          }
+        },
+        "onset_of_action": "Rapid.",
+        "contraindications": [
+          "Severe pulmonary disease",
+          "Raised intracranial pressure"
+        ],
+        "side_effects": [
+          "Dose-dependent hypotension",
+          "Respiratory depression"
+        ],
+        "drug_interactions": [
+          "Opioids and nitrous oxide reduce required concentration."
+        ]
+      },
+      {
+        "drug_name": "Sevoflurane",
+        "classifications": ["Anesthetic (Inhalational)"],
+        "description": "Volatile anaesthetic with even faster induction/recovery than isoflurane and less pungent smell.",
+        "indications": [
+          "Induction and maintenance of general anaesthesia."
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 2.5,
+            "max_mg_kg": 2.5,
+            "unit": "MAC %",
+            "notes": "MAC is ~2.5%. 6-8% required for induction in unpremedicated dogs."
+          },
+          "feline": {
+            "min_mg_kg": 2.5,
+            "max_mg_kg": 2.5,
+            "unit": "MAC %",
+            "notes": "MAC is similar (~2.5%)."
+          }
+        },
+        "onset_of_action": "Very rapid.",
+        "contraindications": [
+          "Raised intracranial pressure",
+          "Severe respiratory compromise"
+        ],
+        "side_effects": [
+          "Dose-dependent hypotension",
+          "Respiratory depression",
+          "Agitation during very rapid recovery"
+        ],
+        "drug_interactions": [
+          "Nitrous oxide and opioids reduce required concentration."
+        ]
+      },
+      {
+        "drug_name": "Alfaxalone",
+        "classifications": ["Anesthetic (Injectable)"],
+        "description": "Neurosteroid injectable anesthetic agent.",
+        "indications": [
+          "Induction of anaesthesia",
+          "Maintenance of anaesthesia (CRI)",
+          "Sedation (i.m. - unauthorized route)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 2.0,
+            "max_mg_kg": 3.0,
+            "unit": "mg/kg",
+            "notes": "3 mg/kg i.v. (unpremedicated), 2 mg/kg (premedicated). CRI at 6-9 mg/kg/h."
+          },
+          "feline": {
+            "min_mg_kg": 2.0,
+            "max_mg_kg": 5.0,
+            "unit": "mg/kg",
+            "notes": "2-5 mg/kg i.v. for induction. CRI at 7-10 mg/kg/h."
+          }
+        },
+        "onset_of_action": "Rapid.",
+        "contraindications": [
+          "Do not combine with other i.v. anaesthetic agents."
+        ],
+        "side_effects": [
+          "Transient increase in heart rate",
+          "Respiratory depression (overdoses)",
+          "Hypotension"
+        ],
+        "drug_interactions": [
+          "Premedication reduces required induction dose."
+        ]
+      },
+      {
+        "drug_name": "Ketamine",
+        "classifications": ["Anesthetic (Injectable)", "Clinical Use (Analgesic)"],
+        "description": "Dissociative anesthetic and NMDA receptor antagonist.",
+        "indications": [
+          "Chemical restraint or dissociative anaesthesia",
+          "Perioperative analgesia (CRI)",
+          "NMDA receptor blockade to inhibit central sensitization"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 2.0,
+            "max_mg_kg": 7.0,
+            "unit": "mg/kg",
+            "notes": "2 mg/kg i.v. for induction (with diazepam). 5-7 mg/kg i.m. with medetomidine."
+          },
+          "feline": {
+            "min_mg_kg": 2.5,
+            "max_mg_kg": 7.5,
+            "unit": "mg/kg",
+            "notes": "2.5-7.5 mg/kg i.m. (depending on combination and procedure)."
+          }
+        },
+        "onset_of_action": "Rapid.",
+        "contraindications": [
+          "Raised intracranial pressure",
+          "Risk of ocular perforation",
+          "Severe cardiovascular disease"
+        ],
+        "side_effects": [
+          "Muscle hypertonicity",
+          "Open eyes (require lubricant)",
+          "Salivation",
+          "Mild cardiovascular stimulation"
+        ],
+        "drug_interactions": [
+          "Combination with alpha-2 agonists requires delayed reversal (wait 45 min)."
+        ]
+      },
+      {
+        "drug_name": "Propofol",
+        "classifications": ["Anesthetic (Injectable)"],
+        "description": "Short-acting lipophilic anesthetic; GABA modulator.",
+        "indications": [
+          "Induction and maintenance (CRI) of anaesthesia."
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 1.0,
+            "max_mg_kg": 7.0,
+            "unit": "mg/kg",
+            "notes": "6-7 mg/kg i.v. (unpremedicated); 1-4 mg/kg (premedicated). CRI at 0.1-0.4 mg/kg/min."
+          },
+          "feline": {
+            "min_mg_kg": 2.0,
+            "max_mg_kg": 8.0,
+            "unit": "mg/kg",
+            "notes": "8 mg/kg i.v. (unpremedicated); 2-5 mg/kg (premedicated)."
+          }
+        },
+        "onset_of_action": "Rapid.",
+        "contraindications": [
+          "None specific, but use caution in hypovolaemic patients."
+        ],
+        "side_effects": [
+          "Apnoea (if given too fast)",
+          "Hypotension",
+          "Heinz body anaemia (reported in cats with repeated doses)",
+          "Muscle tremors"
+        ],
+        "drug_interactions": [
+          "No major clinical interactions; premedication reduces dose."
+        ]
+      },
+      {
+        "drug_name": "Lidocaine",
+        "classifications": ["Emergency", "Anesthetic (Local)", "Clinical Use (Antiarrhythmic)"],
+        "description": "Local anaesthetic and Class 1b antiarrhythmic agent.",
+        "indications": [
+          "Local analgesia (infiltration, nerve block)",
+          "Management of ventricular tachyarrhythmias",
+          "Systemic analgesia (CRI)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 2.0,
+            "max_mg_kg": 8.0,
+            "unit": "mg/kg",
+            "notes": "2-8 mg/kg i.v. boluses for arrhythmias. Max local dose 4 mg/kg."
+          },
+          "feline": {
+            "min_mg_kg": 0.25,
+            "max_mg_kg": 2.0,
+            "unit": "mg/kg",
+            "notes": "0.25-2.0 mg/kg i.v. slowly for arrhythmias. Highly sensitive to toxicity."
+          }
+        },
+        "onset_of_action": "Rapid.",
+        "contraindications": [
+          "Do not give by CRI to cats (negative haemodynamic effects)",
+          "Do not use with adrenaline for ring blocks"
+        ],
+        "side_effects": [
+          "CNS toxicity (seizures, muscle fasciculations)",
+          "Vomiting",
+          "Bradycardia",
+          "Hypotension"
+        ],
+        "drug_interactions": [
+          "Cimetidine/propranolol may prolong clearance."
+        ]
+      },
+      {
+        "drug_name": "Carprofen",
+        "classifications": ["Clinical Use (NSAID/Analgesic)"],
+        "description": "Preferential COX-2 inhibitor; limiting inflammatory prostaglandins.",
+        "indications": [
+          "Control of postoperative pain",
+          "Reduction of chronic inflammation (osteoarthritis)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 4.0,
+            "max_mg_kg": 4.0,
+            "unit": "mg/kg",
+            "notes": "i.v., s.c. or p.o. (single or divided). Maintenance dose may be reduced to 2 mg/kg."
+          },
+          "feline": {
+            "min_mg_kg": 4.0,
+            "max_mg_kg": 4.0,
+            "unit": "mg/kg",
+            "notes": "Single perioperative dose only. Tablets not authorized for cats."
+          }
+        },
+        "onset_of_action": "Analgesia up to 24 hours.",
+        "contraindications": [
+          "Dehydration/Hypotension",
+          "GI disease",
+          "Renal disease (perioperative period)",
+          "Animals <6 weeks old"
+        ],
+        "side_effects": [
+          "GI signs (vomiting, diarrhoea)",
+          "Renal papillary necrosis (risk in hypotensive patients)"
+        ],
+        "drug_interactions": [
+          "Do not combine with other NSAIDs or glucocorticoids."
+        ]
+      },
+      {
+        "drug_name": "Ketoprofen",
+        "classifications": ["Clinical Use (NSAID/Analgesic)"],
+        "description": "Non-selective COX inhibitor and lipoxygenase inhibitor.",
+        "indications": [
+          "Relief of acute musculoskeletal pain",
+          "Chronic pain (osteoarthritis) in dogs"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.25,
+            "max_mg_kg": 2.0,
+            "unit": "mg/kg",
+            "notes": "2 mg/kg s.c./i.m./i.v. for 3 days; 0.25 mg/kg p.o. for long-term."
+          },
+          "feline": {
+            "min_mg_kg": 1.0,
+            "max_mg_kg": 2.0,
+            "unit": "mg/kg",
+            "notes": "2 mg/kg s.c. for 3 days; 1 mg/kg p.o. for up to 5 days."
+          }
+        },
+        "onset_of_action": "Variable.",
+        "contraindications": [
+          "Not authorized for preoperative administration",
+          "GI disease",
+          "Animals <6 weeks old"
+        ],
+        "side_effects": [
+          "GI ulceration",
+          "Renal damage in dehydrated patients"
+        ],
+        "drug_interactions": [
+          "Do not use with other NSAIDs or corticosteroids."
+        ]
+      },
+      {
+        "drug_name": "Firocoxib",
+        "classifications": ["Clinical Use (NSAID/Analgesic)"],
+        "description": "Selective COX-2 inhibitor.",
+        "indications": [
+          "Relief of pain/inflammation (osteoarthritis and surgery)."
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 5.0,
+            "max_mg_kg": 5.0,
+            "unit": "mg/kg",
+            "notes": "p.o. q24h. Give 2 hours before surgery for perioperative use."
+          },
+          "feline": {
+            "min_mg_kg": 0.0,
+            "max_mg_kg": 0.0,
+            "unit": "mg/kg",
+            "notes": "DO NOT USE in cats."
+          }
+        },
+        "onset_of_action": "Long duration.",
+        "contraindications": [
+          "Dehydration/Hypotension",
+          "Dogs <10 weeks old or <3 kg"
+        ],
+        "side_effects": [
+          "GI signs",
+          "Renal/liver toxicity (rarely)"
+        ],
+        "drug_interactions": [
+          "Potential synergy with platinum chemotherapy for bladder tumours."
+        ]
+      },
+      {
+        "drug_name": "Meloxicam",
+        "classifications": ["Clinical Use (NSAID/Analgesic)"],
+        "description": "Preferential COX-2 inhibitor.",
+        "indications": [
+          "Musculoskeletal disorders",
+          "Postoperative pain and inflammation"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.1,
+            "max_mg_kg": 0.2,
+            "unit": "mg/kg",
+            "notes": "0.2 mg/kg initial dose; 0.1 mg/kg maintenance p.o. q24h."
+          },
+          "feline": {
+            "min_mg_kg": 0.05,
+            "max_mg_kg": 0.3,
+            "unit": "mg/kg",
+            "notes": "0.3 mg/kg s.c. once for surgery. Chronic pain: 0.1 mg/kg q24h then 0.05 mg/kg."
+          }
+        },
+        "onset_of_action": "Effects last 24 hours.",
+        "contraindications": [
+          "Dehydration/Hypotension",
+          "GI disease",
+          "Animals <6 weeks old"
+        ],
+        "side_effects": [
+          "GI signs (vomiting, soft stools)"
+        ],
+        "drug_interactions": [
+          "Do not combine with other NSAIDs or glucocorticoids."
+        ]
+      },
+      {
+        "drug_name": "Robenacoxib",
+        "classifications": ["Clinical Use (NSAID/Analgesic)"],
+        "description": "Selective COX-2 inhibitor; tissue selective (concentrates at inflammation sites).",
+        "indications": [
+          "Osteoarthritis pain",
+          "Acute musculoskeletal pain in cats",
+          "Postoperative pain"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 1.0,
+            "max_mg_kg": 2.0,
+            "unit": "mg/kg",
+            "notes": "p.o. q24h (do not give with food). 2 mg/kg s.c. for surgery."
+          },
+          "feline": {
+            "min_mg_kg": 1.0,
+            "max_mg_kg": 2.0,
+            "unit": "mg/kg",
+            "notes": "p.o. q24h (highly palatable). 2 mg/kg s.c. for surgery."
+          }
+        },
+        "onset_of_action": "Short plasma half-life (~2h), but concentrates in tissues.",
+        "contraindications": [
+          "Dogs <12 weeks; Cats <16 weeks",
+          "Patients <2.5 kg",
+          "Pregnancy/Lactation"
+        ],
+        "side_effects": [
+          "Mild GI signs"
+        ],
+        "drug_interactions": [
+          "Do not combine with other NSAIDs or glucocorticoids."
+        ]
+      },
+      {
+        "drug_name": "Buprenorphine",
+        "classifications": ["Anesthetic (Analgesic)"],
+        "description": "Partial mu agonist; high affinity and slow dissociation from receptors.",
+        "indications": [
+          "Relief of mild to moderate perioperative pain",
+          "Sedation (with ACP or dexmedetomidine)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.02,
+            "max_mg_kg": 0.03,
+            "unit": "mg/kg",
+            "notes": "i.v., i.m., or s.c. q6h."
+          },
+          "feline": {
+            "min_mg_kg": 0.02,
+            "max_mg_kg": 0.03,
+            "unit": "mg/kg",
+            "notes": "i.v., i.m., s.c., or oral transmucosal (OTM)."
+          }
+        },
+        "onset_of_action": "15-30 minutes; duration approximately 6 hours.",
+        "contraindications": [
+          "None specific, but may antagonize full mu agonists."
+        ],
+        "side_effects": [
+          "Rarely: sedation, respiratory depression (mild)."
+        ],
+        "drug_interactions": [
+          "Reduces doses of induction anaesthetics."
+        ]
+      },
+      {
+        "drug_name": "Butorphanol",
+        "classifications": ["Anesthetic (Analgesic)", "Clinical Use (Antitussive)"],
+        "description": "Kappa agonist and mu antagonist.",
+        "indications": [
+          "Management of mild perioperative pain",
+          "Sedation (with alpha-2 agonists)",
+          "Antitussive for non-productive cough"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.05,
+            "max_mg_kg": 1.0,
+            "unit": "mg/kg",
+            "notes": "0.2-0.5 mg/kg for analgesia. 0.05-0.1 mg/kg i.v./i.m. for cough."
+          },
+          "feline": {
+            "min_mg_kg": 0.2,
+            "max_mg_kg": 0.5,
+            "unit": "mg/kg",
+            "notes": "i.v., i.m., or s.c. for analgesia."
+          }
+        },
+        "onset_of_action": "Rapid; duration 45 min to 4 hours.",
+        "contraindications": [
+          "Lower respiratory disease with copious mucus",
+          "Not recommended if full mu analgesia is needed during surgery"
+        ],
+        "side_effects": [
+          "Rarely: sedation, bradycardia, vomiting."
+        ],
+        "drug_interactions": [
+          "Antagonizes analgesia of full mu agonists (morphine, fentanyl)."
+        ]
+      },
+      {
+        "drug_name": "Fentanyl",
+        "classifications": ["Anesthetic (Analgesic)"],
+        "description": "Pure mu agonist; 50-100 times more potent than morphine.",
+        "indications": [
+          "Profound intraoperative analgesia",
+          "Chronic pain (transdermal patches)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.0025,
+            "max_mg_kg": 0.01,
+            "unit": "mg/kg/h",
+            "notes": "CRI at 2.5-10 µg/kg/h during anaesthesia. Patch: 4 µg/kg/h."
+          },
+          "feline": {
+            "min_mg_kg": 0.005,
+            "max_mg_kg": 0.005,
+            "unit": "mg/kg",
+            "notes": "5 µg/kg boluses. 25 µg/h patch for 3-5 kg cat."
+          }
+        },
+        "onset_of_action": "Immediate (i.v.); Patches take 7h (cats) or 24h (dogs) to act.",
+        "contraindications": [
+          "Severe respiratory compromise"
+        ],
+        "side_effects": [
+          "Respiratory depression",
+          "Bradycardia",
+          "Accumulation with long CRI"
+        ],
+        "drug_interactions": [
+          "Reduces required doses of other anaesthetics."
+        ]
+      },
+      {
+        "drug_name": "Methadone",
+        "classifications": ["Anesthetic (Analgesic)"],
+        "description": "Pure mu agonist; synthetic opioid similar to morphine.",
+        "indications": [
+          "Moderate to severe perioperative pain",
+          "Sedation (with ACP or alpha-2 agonists)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.1,
+            "max_mg_kg": 0.5,
+            "unit": "mg/kg",
+            "notes": "i.m. or 0.1-0.3 mg/kg i.v. as required."
+          },
+          "feline": {
+            "min_mg_kg": 0.1,
+            "max_mg_kg": 0.6,
+            "unit": "mg/kg",
+            "notes": "i.m. or i.v.. 0.6 mg/kg for OTM."
+          }
+        },
+        "onset_of_action": "Rapid; duration 3-4 hours.",
+        "contraindications": [
+          "None specific."
+        ],
+        "side_effects": [
+          "Respiratory depression (during anaesthesia)",
+          "Excitation (rarely after i.v.)",
+          "Constipation (chronic use)"
+        ],
+        "drug_interactions": [
+          "Do not use with MAOIs (risk of hyperpyrexia)."
+        ]
+      },
+      {
+        "drug_name": "Morphine",
+        "classifications": ["Anesthetic (Analgesic)"],
+        "description": "Pure mu agonist; the reference opioid.",
+        "indications": [
+          "Moderate to severe pain management",
+          "Epidural analgesia"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.1,
+            "max_mg_kg": 0.5,
+            "unit": "mg/kg",
+            "notes": "0.5 mg/kg i.m. q2h for analgesia. Epidural: 0.1-0.2 mg/kg (preservative-free)."
+          },
+          "feline": {
+            "min_mg_kg": 0.1,
+            "max_mg_kg": 0.4,
+            "unit": "mg/kg",
+            "notes": "i.v. or i.m. q3-4h."
+          }
+        },
+        "onset_of_action": "Rapid; duration 2-4 hours.",
+        "contraindications": [
+          "Raised intraocular pressure (induces vomiting)",
+          "Cases where histamine release is dangerous"
+        ],
+        "side_effects": [
+          "Vomiting",
+          "Histamine release (if rapid i.v.)",
+          "Respiratory depression",
+          "Constipation"
+        ],
+        "drug_interactions": [
+          "Potentiated by antihistamines and phenothiazines."
+        ]
+      },
+      {
+        "drug_name": "Tramadol",
+        "classifications": ["Clinical Use (Analgesic)"],
+        "description": "Multimodal analgesic: mu agonist and inhibitor of noradrenaline/5-HT reuptake.",
+        "indications": [
+          "Mild acute and chronic soft tissue/musculoskeletal pain",
+          "Adjunct for chronic pain management"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 2.0,
+            "max_mg_kg": 5.0,
+            "unit": "mg/kg",
+            "notes": "p.o. q8h. 2 mg/kg i.v. for acute pain."
+          },
+          "feline": {
+            "min_mg_kg": 1.0,
+            "max_mg_kg": 4.0,
+            "unit": "mg/kg",
+            "notes": "2-4 mg/kg p.o. q8h. 1-2 mg/kg i.v./s.c."
+          }
+        },
+        "onset_of_action": "Variable.",
+        "contraindications": [
+          "History of seizures (epilepsy)"
+        ],
+        "side_effects": [
+          "Sedation (dogs)",
+          "Dysphoria (cats)",
+          "Nausea",
+          "Mydriasis (cats)"
+        ],
+        "drug_interactions": [
+          "Risk of Serotonin Syndrome with SSRIs/MAOIs.",
+          "Effectiveness reduced by ondansetron."
+        ]
+      },
+      {
+        "drug_name": "Naloxone",
+        "classifications": ["Emergency (Antagonist)"],
+        "description": "Competitive opioid receptor antagonist.",
+        "indications": [
+          "Treatment of opioid overdose.",
+          "Management of unexpectedly long recovery from anaesthesia with opioids."
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.01,
+            "max_mg_kg": 0.04,
+            "unit": "mg/kg",
+            "notes": "0.01-0.02 mg/kg i.v. or 0.04 mg/kg i.m./s.c."
+          },
+          "feline": {
+            "min_mg_kg": 0.01,
+            "max_mg_kg": 0.04,
+            "unit": "mg/kg",
+            "notes": "0.01-0.02 mg/kg i.v. or 0.04 mg/kg i.m./s.c."
+          }
+        },
+        "onset_of_action": "Very rapid (i.v.); short duration (30-40 min).",
+        "contraindications": [
+          "None specific in emergency settings."
+        ],
+        "side_effects": [
+          "Antanalgesia (sudden onset of severe pain if used after major surgery)."
+        ],
+        "drug_interactions": [
+          "Specific antagonist for mu, kappa, and delta opioid receptors."
+        ]
+      },
+      {
+        "drug_name": "Adrenaline (Epinephrine)",
+        "classifications": ["Emergency"],
+        "description": "Potent catecholamine acting on alpha and beta-adrenergic receptors.",
+        "indications": [
+          "Cardiac resuscitation (Asystole/PEA)",
+          "Severe anaphylaxis",
+          "Status asthmaticus"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.01,
+            "max_mg_kg": 0.01,
+            "unit": "mg/kg",
+            "notes": "10 µg/kg i.v. every 3-5 min for CPA. Double dose if used intratreacheally."
+          },
+          "feline": {
+            "min_mg_kg": 0.01,
+            "max_mg_kg": 0.01,
+            "unit": "mg/kg",
+            "notes": "10 µg/kg i.v. or i.m. for anaphylaxis."
+          }
+        },
+        "onset_of_action": "Immediate.",
+        "contraindications": [
+          "Direct intracardiac injection (risk of arrythmias)"
+        ],
+        "side_effects": [
+          "Ventricular fibrillation",
+          "Tachycardia",
+          "Hypertension",
+          "Necrosis at injection site"
+        ],
+        "drug_interactions": [
+          "Halothane sensitizes myocardium to arrhythmias.",
+          "Beta-blockers (propranolol) may block beta effects causing severe hypertension."
+        ]
+      },
+      {
+        "drug_name": "Acepromazine",
+        "classifications": ["Anesthetic (Pre-medication)", "Clinical Use (Sedative)"],
+        "description": "Phenothiazine CNS depressant causing sedation and reduction in activity.",
+        "indications": [
+          "Sedation or pre-anaesthetic medication",
+          "Antiemetic",
+          "Feline thromboembolism management (vasodilation)"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.005,
+            "max_mg_kg": 0.05,
+            "unit": "mg/kg",
+            "notes": "0.01-0.05 mg/kg i.m.. 0.005-0.01 mg/kg for Boxers (risk of sinoatrial block)."
+          },
+          "feline": {
+            "min_mg_kg": 0.01,
+            "max_mg_kg": 0.05,
+            "unit": "mg/kg",
+            "notes": "0.01-0.05 mg/kg i.m., s.c. or i.v. (slow)."
+          }
+        },
+        "onset_of_action": "20-30 minutes (i.m.); duration up to 6 hours.",
+        "contraindications": [
+          "Hypotension/Shock",
+          "Liver disease",
+          "Animals <3 months old",
+          "Anaemic animals"
+        ],
+        "side_effects": [
+          "Profound hypotension",
+          "Red blood cell sequestration in spleen",
+          "Spontaneous fainting (Boxers)"
+        ],
+        "drug_interactions": [
+          "Additive CNS depression with barbiturates or propofol.",
+          "Concomitant adrenaline may cause tachycardia/vasodilation."
+        ]
+      },
+      {
+        "drug_name": "Dobutamine",
+        "classifications": ["Clinical Use (Inotrope)"],
+        "description": "Synthetic direct-acting beta-1 adrenergic agonist.",
+        "indications": [
+          "Short-term inotropic support for heart failure (DCM)",
+          "Septic or cardiogenic shock",
+          "Hypotension during anaesthesia"
+        ],
+        "dosage": {
+          "canine": {
+            "min_mg_kg": 0.0025,
+            "max_mg_kg": 0.02,
+            "unit": "mg/kg/min",
+            "notes": "2.5-20 µg/kg/min CRI. Titrate to effect."
+          },
+          "feline": {
+            "min_mg_kg": 0.001,
+            "max_mg_kg": 0.005,
+            "unit": "mg/kg/min",
+            "notes": "1-5 µg/kg/min CRI. Higher doses may cause seizures in cats."
+          }
+        },
+        "onset_of_action": "Immediate; very short duration.",
+        "contraindications": [
+          "Cardiac outflow obstruction (aortic stenosis)"
+        ],
+        "side_effects": [
+          "Tachyarrhythmias",
+          "Increased myocardial oxygen demand"
+        ],
+        "drug_interactions": [
+          "Beta-blockers antagonize effects.",
+          "Halothane increases arrhythmia risk."
+        ]
+      }
+    ]
+  }
